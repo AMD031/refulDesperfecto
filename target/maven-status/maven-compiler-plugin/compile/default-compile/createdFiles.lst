@@ -1,0 +1,6 @@
+com\mycompany\apidesperfectos\controlador\DesperfectoServiceController.class
+com\mycompany\apidesperfectos\modelo\Desperfecto.class
+com\mycompany\apidesperfectos\excepcion\RecordNotFoundException.class
+com\mycompany\apidesperfectos\AppMain.class
+com\mycompany\apidesperfectos\servicios\DesperfectoService.class
+com\mycompany\apidesperfectos\repositorio\DesperfectoRepositorio.class
