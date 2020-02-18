@@ -101,7 +101,7 @@ public class UsuarioService {
     }*/
 
     public List<IDesperfecto> getDesperfectoByIdUsuario(Long id) {
-        List<IDesperfecto> desperfectos = repositorio.getDesperfectoByIdUsuario(id);
+        List<IDesperfecto> desperfectos = repositorio.getDesperfectosByIdUsuario(id);
         if (desperfectos.size() > 0) {
             return desperfectos;
         } else {
@@ -109,6 +109,27 @@ public class UsuarioService {
         }
         
         
+    }
+
+    public List<IDesperfecto> getDesperfectoByEmail(String email) {
+        
+        List<IDesperfecto> desperfectos = repositorio.getDesperfectoByEmail(email);
+        if (desperfectos.size() > 0) {
+            return desperfectos;
+        } else {
+            return new ArrayList<IDesperfecto>();
+        }
+        
+      
+    }
+    
+      public List<IDesperfecto> getDesperfectoByNombreUsuario(String nombre) {
+        List<IDesperfecto> desperfectos = repositorio.getDesperfectoByNombreUsuario(nombre);
+        if (desperfectos.size() > 0) {
+            return desperfectos;
+        } else {
+            return new ArrayList<IDesperfecto>();
+        } 
     }
   
     

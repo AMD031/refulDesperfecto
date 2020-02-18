@@ -20,8 +20,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepositorio
         extends JpaRepository<Usuario, Long> {
-   @Query( value = "SELECT ID_DESPERFECTO,FOTO ,LATITUD,LONGITUD FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk" ,nativeQuery = true)
-    public List<IDesperfecto> getDesperfectoByIdUsuario(Long id);
+   @Query( value = "SELECT ID_DESPERFECTO,FOTO ,LATITUD,LONGITUD, fecha FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where USUARIO.Id_usuario = ? " ,nativeQuery = true)
+    public List<IDesperfecto> getDesperfectosByIdUsuario(Long id);
+
+     @Query( value = "SELECT ID_DESPERFECTO,FOTO ,LATITUD,LONGITUD, fecha FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where USUARIO.email like %?1%" ,nativeQuery = true)
+    public List<IDesperfecto> getDesperfectoByEmail(String email);
+ 
+    @Query( value =  "SELECT ID_DESPERFECTO,FOTO ,LATITUD,LONGITUD, fecha FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where USUARIO.NOMBRE_USUARIO like %?1%" ,nativeQuery = true)
+    public List<IDesperfecto> getDesperfectoByNombreUsuario(String nombre);
 
     
     

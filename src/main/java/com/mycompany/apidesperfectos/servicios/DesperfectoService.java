@@ -6,6 +6,8 @@
 package com.mycompany.apidesperfectos.servicios;
 
 import com.mycompany.apidesperfectos.excepcion.RecordNotFoundException;
+import com.mycompany.apidesperfectos.intefaces.IDesperfecto;
+import com.mycompany.apidesperfectos.intefaces.IUsuario;
 import com.mycompany.apidesperfectos.modelo.Desperfecto;
 import com.mycompany.apidesperfectos.modelo.Usuario;
 import com.mycompany.apidesperfectos.repositorio.DesperfectoRepositorio;
@@ -113,6 +115,21 @@ public class DesperfectoService {
         }
     
     }
+
+    public List<IUsuario> getUsaurioByIdDesperfecto(Long id) {
+      
+         List<IUsuario> desperfectos = repositorio.getUsaurioByIdDesperfecto(id);
+        if (desperfectos.size() > 0) {
+            return desperfectos;
+        } else {
+            return new ArrayList<IUsuario>();
+        }
+        
+        
+        
+    }
+
+
   
     
 }

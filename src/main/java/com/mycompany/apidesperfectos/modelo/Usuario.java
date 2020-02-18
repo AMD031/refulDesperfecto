@@ -5,6 +5,7 @@
  */
 package com.mycompany.apidesperfectos.modelo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable{
    
     @Id
     @Column(name = "id_usuario",updatable = false, nullable = false)
@@ -33,56 +34,54 @@ public class Usuario {
     
     @Column(name = "email")
     private String email;
-    @Column(name = "nombreUsuario")
-    private String nombreUsuario;
-    @Column(name="urlImage")
-    private String urlImage;
+    @Column(name = "nombre_usuario")
+    private String nombre_usuario;
+    @Column(name="url_imagen")
+    private String url_imagen;
 
     
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)       
     Set<Desperfecto> desperfectos = new HashSet<>();;
-    
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
 
     public Long getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public String getNombre_usuario() {
+        return nombre_usuario;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public String getUrl_imagen() {
+        return url_imagen;
     }
 
     public Set<Desperfecto> getDesperfectos() {
         return desperfectos;
     }
 
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+
+    public void setUrl_imagen(String url_imagen) {
+        this.url_imagen = url_imagen;
+    }
+
     public void setDesperfectos(Set<Desperfecto> desperfectos) {
         this.desperfectos = desperfectos;
     }
-
- 
 
    public void addDesperfecto(Desperfecto desperfecto) {
         if (  this.desperfectos== null) {
@@ -103,11 +102,11 @@ public class Usuario {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.id_usuario);
-        hash = 23 * hash + Objects.hashCode(this.email);
-        hash = 23 * hash + Objects.hashCode(this.nombreUsuario);
-        hash = 23 * hash + Objects.hashCode(this.urlImage);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id_usuario);
+        hash = 41 * hash + Objects.hashCode(this.email);
+        hash = 41 * hash + Objects.hashCode(this.nombre_usuario);
+        hash = 41 * hash + Objects.hashCode(this.url_imagen);
         return hash;
     }
 
@@ -126,10 +125,10 @@ public class Usuario {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.nombreUsuario, other.nombreUsuario)) {
+        if (!Objects.equals(this.nombre_usuario, other.nombre_usuario)) {
             return false;
         }
-        if (!Objects.equals(this.urlImage, other.urlImage)) {
+        if (!Objects.equals(this.url_imagen, other.url_imagen)) {
             return false;
         }
         if (!Objects.equals(this.id_usuario, other.id_usuario)) {
@@ -138,8 +137,7 @@ public class Usuario {
         return true;
     }
 
- 
-
+   
      
     
     

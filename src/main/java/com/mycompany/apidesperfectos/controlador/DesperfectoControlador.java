@@ -6,6 +6,8 @@
 package com.mycompany.apidesperfectos.controlador;
 
 import com.mycompany.apidesperfectos.excepcion.RecordNotFoundException;
+import com.mycompany.apidesperfectos.intefaces.IDesperfecto;
+import com.mycompany.apidesperfectos.intefaces.IUsuario;
 import com.mycompany.apidesperfectos.modelo.Desperfecto;
 import com.mycompany.apidesperfectos.modelo.Usuario;
 import com.mycompany.apidesperfectos.servicios.DesperfectoService;
@@ -84,4 +86,17 @@ public class DesperfectoControlador
         return new ResponseEntity<Desperfecto>(created, new HttpHeaders(), HttpStatus.OK);
     }
  
+      @GetMapping("/usuarioPorIdDesperfecto/{id}")
+      public ResponseEntity<List<IUsuario>> getUsaurioByIdDesperfecto(@PathVariable("id") Long id) {
+    	List<IUsuario> list = service.getUsaurioByIdDesperfecto(id);
+        return new ResponseEntity<List<IUsuario>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+     
+      
+
+      
+      
+     
+     
 }

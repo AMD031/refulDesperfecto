@@ -6,6 +6,7 @@
 package com.mycompany.apidesperfectos.intefaces;
 
 import com.mycompany.apidesperfectos.modelo.Usuario;
+import java.sql.Timestamp;
 
 /**
  *
@@ -17,6 +18,7 @@ public interface IDesperfecto {
     public Double getLatitud();
     public Double getLongitud();
     public String getFoto();
+    public void setFecha(Timestamp fecha);
    //public Usuario getUsuario();
     
     

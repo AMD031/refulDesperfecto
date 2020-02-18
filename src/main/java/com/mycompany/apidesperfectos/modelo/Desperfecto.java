@@ -6,6 +6,9 @@
 package com.mycompany.apidesperfectos.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -23,20 +27,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Desperfecto")
-public class Desperfecto{
+public class Desperfecto implements Serializable{
+    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "id_desperfecto",updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_desperfecto;
     
+    @NotBlank
     @Column(name = "latitud")
     private Double latitud;
-    
+   
+    @NotBlank
     @Column(name = "longitud")
     private Double longitud;
     
     @Column(name = "foto")
     private String foto;
+    
+    @NotBlank
+    @Column(name = "fecha")
+    private Timestamp fecha;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario_fk")
@@ -82,6 +93,61 @@ public class Desperfecto{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id_desperfecto);
+        hash = 97 * hash + Objects.hashCode(this.latitud);
+        hash = 97 * hash + Objects.hashCode(this.longitud);
+        hash = 97 * hash + Objects.hashCode(this.foto);
+        hash = 97 * hash + Objects.hashCode(this.fecha);
+        hash = 97 * hash + Objects.hashCode(this.usuario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Desperfecto other = (Desperfecto) obj;
+        if (!Objects.equals(this.foto, other.foto)) {
+            return false;
+        }
+        if (!Objects.equals(this.id_desperfecto, other.id_desperfecto)) {
+            return false;
+        }
+        if (!Objects.equals(this.latitud, other.latitud)) {
+            return false;
+        }
+        if (!Objects.equals(this.longitud, other.longitud)) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 
   
    

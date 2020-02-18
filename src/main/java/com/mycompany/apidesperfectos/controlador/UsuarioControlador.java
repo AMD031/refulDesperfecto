@@ -55,14 +55,8 @@ public class UsuarioControlador
         return new ResponseEntity<Usuario>(entity, new HttpHeaders(), HttpStatus.OK);
     }
     
-    /*@GetMapping("/search/{title}")
-    public ResponseEntity<List<Usuario>> getUsuariosByTitle(@PathVariable("title") String title) {
-    	List<Usuario> list = service.getUsuariosByTitle(title);
- 
-        return new ResponseEntity<List<Usuario>>(list, new HttpHeaders(), HttpStatus.OK);
-    }*/
- 
-   @PostMapping
+
+    @PostMapping
     public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody Usuario myUsuario){
     	Usuario created = service.createUsuario(myUsuario);
         return new ResponseEntity<Usuario>(created, new HttpHeaders(), HttpStatus.OK);
@@ -83,10 +77,32 @@ public class UsuarioControlador
     }
  
     @GetMapping("/desperfectoPorIdUsuario/{id}")
-    public ResponseEntity<List<IDesperfecto>> getDesperfectoByIdUsuario(@PathVariable("id") Long id) {
+    public ResponseEntity<List<IDesperfecto>> getDesperfectosByIdUsuario(@PathVariable("id") Long id) {
     	List<IDesperfecto> list = service.getDesperfectoByIdUsuario(id);
         return new ResponseEntity<List<IDesperfecto>>(list, new HttpHeaders(), HttpStatus.OK);
     }
+    
+    
+     @GetMapping("/desperfectoPorEmailUsuario/{email}")
+     public ResponseEntity<List<IDesperfecto>> getDesperfectosByEmail(
+             @PathVariable("email") String email
+     ) {
+    	List<IDesperfecto> list = service.getDesperfectoByEmail(email);
+        return new ResponseEntity<List<IDesperfecto>>(list, new HttpHeaders(), HttpStatus.OK);
+       }
+     
+     
+     @GetMapping("/desperfectoPorNombreUsuario/{nombre}")
+     public ResponseEntity<List<IDesperfecto>> getDesperfectosByNombre(
+             @PathVariable("nombre") String nombre
+     ) {
+    	List<IDesperfecto> list = service.getDesperfectoByNombreUsuario(nombre);
+        return new ResponseEntity<List<IDesperfecto>>(list, new HttpHeaders(), HttpStatus.OK);
+       }
+    
+    
+    
+    
     
     
 }
