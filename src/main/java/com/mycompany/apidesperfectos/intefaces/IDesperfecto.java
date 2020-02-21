@@ -18,7 +18,7 @@ public interface IDesperfecto {
     public Double getLatitud();
     public Double getLongitud();
     public String getFoto();
-    public void setFecha(Timestamp fecha);
+    public Timestamp getFecha();
    //public Usuario getUsuario();
     
     

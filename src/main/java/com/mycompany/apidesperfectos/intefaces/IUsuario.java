@@ -5,6 +5,8 @@
  */
 package com.mycompany.apidesperfectos.intefaces;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Antonio Martínez Díaz

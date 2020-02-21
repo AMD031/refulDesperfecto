@@ -12,6 +12,7 @@ import com.mycompany.apidesperfectos.modelo.Desperfecto;
 import com.mycompany.apidesperfectos.modelo.Usuario;
 import com.mycompany.apidesperfectos.servicios.DesperfectoService;
 import com.mycompany.apidesperfectos.servicios.UsuarioService;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +93,14 @@ public class DesperfectoControlador
         return new ResponseEntity<List<IUsuario>>(list, new HttpHeaders(), HttpStatus.OK);
     }
     
-     
+        @GetMapping("/buscarFecha/{fecha}")
+      public ResponseEntity<List<Desperfecto>> getDesperfectoByFecha (@PathVariable("fecha") String fecha) {
+    	List<Desperfecto> list = service.getDesperfectoByFecha(fecha);
+        return new ResponseEntity<List<Desperfecto>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+      
+      
       
 
       

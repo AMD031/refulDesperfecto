@@ -19,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,25 +30,38 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "Desperfecto")
 public class Desperfecto implements Serializable{
     private static final long serialVersionUID = 1L;
+   
     @Id
     @Column(name = "id_desperfecto",updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_desperfecto;
     
-    @NotBlank
+    @NotNull
     @Column(name = "latitud")
     private Double latitud;
    
-    @NotBlank
+    @NotNull
     @Column(name = "longitud")
     private Double longitud;
     
     @Column(name = "foto")
     private String foto;
-    
-    @NotBlank
+
     @Column(name = "fecha")
-    private Timestamp fecha;
+    private Timestamp fecha = new Timestamp(System.currentTimeMillis());;
+    
+    @Column(name = "descripcion")
+    String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario_fk")
@@ -105,12 +119,12 @@ public class Desperfecto implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id_desperfecto);
-        hash = 97 * hash + Objects.hashCode(this.latitud);
-        hash = 97 * hash + Objects.hashCode(this.longitud);
-        hash = 97 * hash + Objects.hashCode(this.foto);
-        hash = 97 * hash + Objects.hashCode(this.fecha);
-        hash = 97 * hash + Objects.hashCode(this.usuario);
+        hash = 19 * hash + Objects.hashCode(this.id_desperfecto);
+        hash = 19 * hash + Objects.hashCode(this.latitud);
+        hash = 19 * hash + Objects.hashCode(this.longitud);
+        hash = 19 * hash + Objects.hashCode(this.foto);
+        hash = 19 * hash + Objects.hashCode(this.fecha);
+        hash = 19 * hash + Objects.hashCode(this.descripcion);
         return hash;
     }
 
@@ -129,6 +143,9 @@ public class Desperfecto implements Serializable{
         if (!Objects.equals(this.foto, other.foto)) {
             return false;
         }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
         if (!Objects.equals(this.id_desperfecto, other.id_desperfecto)) {
             return false;
         }
@@ -141,12 +158,10 @@ public class Desperfecto implements Serializable{
         if (!Objects.equals(this.fecha, other.fecha)) {
             return false;
         }
-        if (!Objects.equals(this.usuario, other.usuario)) {
-            return false;
-        }
         return true;
     }
 
+   
     
 
   

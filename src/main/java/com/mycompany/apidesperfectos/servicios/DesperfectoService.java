@@ -129,6 +129,16 @@ public class DesperfectoService {
         
     }
 
+    public List<Desperfecto> getDesperfectoByFecha(String fecha) {
+        List<Desperfecto> desperfectos = repositorio.getDesperfectoByFecha(fecha);
+        if (desperfectos.size() > 0) {
+            return desperfectos;
+        } else {
+            return new ArrayList<Desperfecto>();
+        }
+        
+    }
+
 
   
     
