@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 public interface DesperfectoRepositorio
         extends JpaRepository<Desperfecto, Long> {
     
-    @Query(value = "SELECT id_usuario,email,NOMBRE_USUARIO, URL_IMAGEN,fecha   FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where  desperfecto.ID_DESPERFECTO  =?", nativeQuery = true)
+    @Query(value = "SELECT id_usuario,email,NOMBRE_USUARIO, URL_IMAGEN FROM DESPERFECTO  INNER JOIN  USUARIO  ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where  desperfecto.ID_DESPERFECTO  =?", nativeQuery = true)
     public List<IUsuario> getUsaurioByIdDesperfecto(Long id);
    
     @Query(value = "select * from desperfecto where fecha like %?1%" ,nativeQuery = true)

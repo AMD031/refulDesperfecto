@@ -101,8 +101,15 @@ public class UsuarioControlador
        }
     
     
-    
-    
+  
+     @GetMapping("/desperfectoPorNombreUsuarioOEmail/{valor}")
+     public ResponseEntity<List<IDesperfecto>>getDesperfectoByNombreUsuarioOrEmail(
+             @PathVariable("valor") String valor
+     ) {
+    	List<IDesperfecto> list = service.getDesperfectoByNombreUsuarioOrEmail(valor);
+        return new ResponseEntity<List<IDesperfecto>>(list, new HttpHeaders(), HttpStatus.OK);
+       }
+   
     
     
 }

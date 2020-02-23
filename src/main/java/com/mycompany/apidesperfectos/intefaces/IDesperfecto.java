@@ -19,6 +19,8 @@ public interface IDesperfecto {
     public Double getLongitud();
     public String getFoto();
     public Timestamp getFecha();
+    public String getDescripcion();
+    
    //public Usuario getUsuario();
     
     

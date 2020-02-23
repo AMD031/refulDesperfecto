@@ -46,9 +46,9 @@ public class Desperfecto implements Serializable{
     
     @Column(name = "foto")
     private String foto;
-
+    
     @Column(name = "fecha")
-    private Timestamp fecha = new Timestamp(System.currentTimeMillis());;
+    private Timestamp fecha;
     
     @Column(name = "descripcion")
     String descripcion;
@@ -113,6 +113,9 @@ public class Desperfecto implements Serializable{
     }
 
     public void setFecha(Timestamp fecha) {
+        if(fecha ==null){
+            fecha = new Timestamp(System.currentTimeMillis());
+        }
         this.fecha = fecha;
     }
 

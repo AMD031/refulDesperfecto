@@ -131,6 +131,16 @@ public class UsuarioService {
             return new ArrayList<IDesperfecto>();
         } 
     }
+      
+      
+         public List<IDesperfecto> getDesperfectoByNombreUsuarioOrEmail(String valor) {
+        List<IDesperfecto> desperfectos = repositorio.getDesperfectoByNombreUsuarioOrEmail(valor,valor);
+        if (desperfectos.size() > 0) {
+            return desperfectos;
+        } else {
+            return new ArrayList<IDesperfecto>();
+        } 
+    }
   
     
 }

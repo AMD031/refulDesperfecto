@@ -68,6 +68,8 @@ public class DesperfectoService {
                 newEntity.setLatitud(entity.getLatitud());
                 newEntity.setLongitud(entity.getLongitud());
                 newEntity.setFoto(entity.getFoto());
+                newEntity.setFecha(entity.getFecha());
+                newEntity.setDescripcion(entity.getDescripcion());
                 newEntity = repositorio.save(newEntity);
                 return newEntity;
             } else {
