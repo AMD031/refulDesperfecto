@@ -49,9 +49,14 @@ public class UsuarioService {
             throw new RecordNotFoundException("No desperfecto record exist for given id",id);
         }
     }
-    public Usuario createUsuario(Usuario entity){
-        entity = repositorio.save(entity);
-        return entity;
+    public Usuario createUsuario(Usuario entity) throws Exception{
+        List<Usuario> usuario = repositorio.getUsuarioByEmail(entity.getEmail());
+        if(usuario.size()>=1){
+           throw new Exception("Usuario ya existe");
+        }else{
+            entity = repositorio.save(entity);
+            return entity; 
+        }
     }
     /*public Usuario UpdateUsuario(Usuario entity) throws RecordNotFoundException
     {
@@ -89,6 +94,22 @@ public class UsuarioService {
             throw new RecordNotFoundException("No desperfecto record exist for given id",id);
         }
     }
+    
+    
+   
+      public List<Usuario>  getUsuarioByEmail(String nombre) throws Exception 
+    {
+        List<Usuario> usuarios = repositorio.getUsuarioByEmail(nombre); 
+       if (usuarios.size() > 0) {
+            return usuarios;
+        } else {
+            return new ArrayList<Usuario>();
+        }
+    }
+ 
+    
+    
+    
 
    /* public List<Usuario> getUsuariosByTitle(String title) {
         List<Usuario> desperfectoList = repositorio.getByTitle(title);

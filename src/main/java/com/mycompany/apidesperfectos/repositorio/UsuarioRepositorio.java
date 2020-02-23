@@ -32,5 +32,11 @@ public interface UsuarioRepositorio
     @Query( value =  "SELECT distinct ID_DESPERFECTO,FOTO ,LATITUD,LONGITUD, fecha, descripcion FROM DESPERFECTO  INNER JOIN  USUARIO ON  USUARIO.Id_usuario = DESPERFECTO.id_usuario_fk where  USUARIO.email like %?1% or usuario.nombre_usuario like %?2%" ,nativeQuery = true)
     public List<IDesperfecto> getDesperfectoByNombreUsuarioOrEmail(String valor1, String valor2);
     
+    @Query(value = "select * from usuario where email =?",nativeQuery = true)
+     public List<Usuario> getUsuarioByEmail(String valor);
+    
+    
+    
+    
     
 }

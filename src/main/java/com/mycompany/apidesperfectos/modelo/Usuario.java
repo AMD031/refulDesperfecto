@@ -17,6 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -32,10 +34,16 @@ public class Usuario implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_usuario;
     
-    @Column(name = "email")
+    
+    @NotBlank
+    @Column(name = "email", unique = true)
     private String email;
+    
+    @NotBlank
     @Column(name = "nombre_usuario")
     private String nombre_usuario;
+    
+   
     @Column(name="url_imagen")
     private String url_imagen;
 
